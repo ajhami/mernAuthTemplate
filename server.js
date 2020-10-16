@@ -4,9 +4,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
-// Comment out on deployment, OR NOT?
-// const keys = require("./config/keys");
-
 // Require in the router setup for users api
 const users = require("./routes/api/users");
 
@@ -16,8 +13,6 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-// app.use(routes);
 
 // Passport Setup
 app.use(passport.initialize());

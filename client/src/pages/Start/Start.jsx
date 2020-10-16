@@ -1,15 +1,15 @@
 import React from "react";
 import "./style.css";
 import NavBar from "../../components/Navbar";
-import CreateAccountForm from "../../components/CreateAccountForm";
+import StartBody from "../../components/StartBody";
 
-function CreateAccount() {
+function Start() {
     return (
         <div>
             <NavBar />
-            <CreateAccountForm />
+            <StartBody />
         </div>
     );
 };
 
-export default CreateAccount;
+export default Start;

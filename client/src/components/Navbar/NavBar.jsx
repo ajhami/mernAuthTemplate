@@ -8,6 +8,20 @@ function NavBar() {
         <Navbar className="navbar navbar-expand navbar-light bg-light">
             <NavLink
                 className="nav-link"
+                to="/"
+                exact
+            >
+                Start
+            </NavLink>
+            <NavLink
+                className="nav-link"
+                to="/Home"
+                exact
+            >
+                Home
+            </NavLink>
+            <NavLink
+                className="nav-link"
                 to="/CreateAccount"
                 exact
             >

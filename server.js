@@ -1,8 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
-const PORT = process.env.PORT || 8000;
+// Require in the router setup for users api
+const users = require("./routes/api/users");
+
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 
@@ -36,6 +40,14 @@ mongoose
     )
     .then(() => console.log("MongoDB connected!"))
     .catch(err => console.log("Failed to connect to MongoDB.\n", err));
+
+// Passport Setup
+app.use(passport.initialize());
+require("./config/passport")(passport);
+
+
+// Setup Routes
+app.use("/api/users", users);
 
 
 app.listen(PORT, () => {

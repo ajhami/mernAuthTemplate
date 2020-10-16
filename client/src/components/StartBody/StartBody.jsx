@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function HomeBody() {
+function StartBody() {
     return (
         <div className="container">
             <h1>Welcome to the MERN Auth Template!</h1>
@@ -10,4 +10,4 @@ function HomeBody() {
     )
 }
 
-export default HomeBody;
+export default StartBody;

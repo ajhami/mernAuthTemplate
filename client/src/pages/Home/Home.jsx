@@ -1,13 +1,13 @@
 import React from "react";
 import "./style.css";
 import NavBar from "../../components/Navbar";
-import HomeBody from "../../components/HomeBody";
+import LandingBody from "../../components/LandingBody";
 
 function Home() {
     return (
         <div>
             <NavBar />
-            <HomeBody />
+            <LandingBody />
         </div>
     );
 };

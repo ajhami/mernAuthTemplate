@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 
 // Comment out on deployment, OR NOT?
-const keys = require("./config/keys");
+// const keys = require("./config/keys");
 
 // Require in the router setup for users api
 const users = require("./routes/api/users");
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 // Passport Setup
 app.use(passport.initialize());
-require("./config/passport")(passport);
+require("./services/passport")(passport);
 
 // Setup Routes
 app.use("/api/users", users);
@@ -39,7 +39,7 @@ else {
 
 // URI - 1st is localhost connection, 2nd is mongodb atlas connection
 // const URI = "mongodb://localhost/mernauthdemo";
-const URI = process.env.MONGODB_URI || keys.URI;
+const URI = process.env.MONGODB_URI || require("./config/keys").URI;
 
 
 mongoose
@@ -52,15 +52,6 @@ mongoose
     )
     .then(() => console.log("MongoDB connected!"))
     .catch(err => console.log("Failed to connect to MongoDB.\n", err));
-
-// // Passport Setup
-// app.use(passport.initialize());
-// require("./config/passport")(passport);
-
-
-// // Setup Routes
-// app.use("/api/users", users);
-
 
 app.listen(PORT, () => {
     console.log("\nWELCOME TO EXPRESS SERVER!\nApp = Mern Auth Template\nrunning on port ", PORT);

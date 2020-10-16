@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // Keys can be set up after determining database usage
-const keys = require("../../config/keys");
+const secret = process.env.secret || require("../../config/keys").secret;
 // const keys = process.env.MONGODB_URI || "mongodb://localhost/mernauthdemo";
 
 // Load input validation functions and the user model
@@ -92,7 +92,7 @@ router.post("/login", (req, res) => {
                         else {
                             jwt.sign(
                                 payload,
-                                keys.secret,
+                                secret,
                                 {
                                     expiresIn: 1200
                                 },

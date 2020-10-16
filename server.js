@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const keys = require("./config/keys");
 
 // Require in the router setup for users api
 const users = require("./routes/api/users");
@@ -27,7 +28,9 @@ else {
 };
 
 
-const URI = process.env.MONGODB_URI || "mongodb://localhost/mernauthdemo";
+// URI - 1st is localhost connection, 2nd is mongodb atlas connection
+// const URI = "mongodb://localhost/mernauthdemo";
+const URI = process.env.MONGODB_URI || keys.URI;
 
 
 mongoose

@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
-// Comment out on deployment
-// const keys = require("./config/keys");
+// Comment out on deployment, OR NOT?
+const keys = require("./config/keys");
 
 // Require in the router setup for users api
 const users = require("./routes/api/users");
@@ -17,6 +17,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // app.use(routes);
+
+// Passport Setup
+app.use(passport.initialize());
+require("./config/passport")(passport);
+
+// Setup Routes
+app.use("/api/users", users);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "/client/build")));
@@ -46,13 +53,13 @@ mongoose
     .then(() => console.log("MongoDB connected!"))
     .catch(err => console.log("Failed to connect to MongoDB.\n", err));
 
-// Passport Setup
-app.use(passport.initialize());
-require("./config/passport")(passport);
+// // Passport Setup
+// app.use(passport.initialize());
+// require("./config/passport")(passport);
 
 
-// Setup Routes
-app.use("/api/users", users);
+// // Setup Routes
+// app.use("/api/users", users);
 
 
 app.listen(PORT, () => {

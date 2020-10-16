@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const keys = require("./config/keys");
+
+// Comment out on deployment
+// const keys = require("./config/keys");
 
 // Require in the router setup for users api
 const users = require("./routes/api/users");
